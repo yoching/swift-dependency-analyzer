@@ -1,0 +1,287 @@
+{
+  "files" : [
+    {
+      "numberOfStructs" : 1,
+      "name" : "Command.swift",
+      "numberOfClasses" : 0,
+      "functionStats" : [
+        {
+          "bodyLength" : 21,
+          "name" : "run"
+        }
+      ],
+      "numberOfEnums" : 0,
+      "fileLength" : 48
+    },
+    {
+      "numberOfStructs" : 0,
+      "name" : "main.swift",
+      "numberOfClasses" : 0,
+      "functionStats" : [
+
+      ],
+      "numberOfEnums" : 0,
+      "fileLength" : 14
+    },
+    {
+      "numberOfClasses" : 1,
+      "fileLength" : 45,
+      "name" : "BodyStripper.swift",
+      "functionStats" : [
+        {
+          "name" : "visit",
+          "bodyLength" : 4
+        },
+        {
+          "name" : "clean",
+          "bodyLength" : 19
+        }
+      ],
+      "numberOfEnums" : 0,
+      "numberOfStructs" : 0
+    },
+    {
+      "numberOfClasses" : 0,
+      "fileLength" : 22,
+      "name" : "Comment.swift",
+      "functionStats" : [
+
+      ],
+      "numberOfEnums" : 1,
+      "numberOfStructs" : 1
+    },
+    {
+      "numberOfClasses" : 0,
+      "fileLength" : 41,
+      "name" : "Configuration.swift",
+      "functionStats" : [
+        {
+          "bodyLength" : 4,
+          "name" : "excludedPath"
+        },
+        {
+          "bodyLength" : 3,
+          "name" : "parse"
+        },
+        {
+          "bodyLength" : 4,
+          "name" : "parse"
+        }
+      ],
+      "numberOfEnums" : 0,
+      "numberOfStructs" : 1
+    },
+    {
+      "numberOfClasses" : 0,
+      "fileLength" : 42,
+      "name" : "Extensions.swift",
+      "functionStats" : [
+        {
+          "name" : "sum",
+          "bodyLength" : 10
+        },
+        {
+          "name" : "removingDuplicateLineBreaks",
+          "bodyLength" : 4
+        }
+      ],
+      "numberOfEnums" : 0,
+      "numberOfStructs" : 0
+    },
+    {
+      "numberOfClasses" : 0,
+      "fileLength" : 66,
+      "name" : "File.swift",
+      "functionStats" : [
+        {
+          "name" : "debugPrint",
+          "bodyLength" : 6
+        }
+      ],
+      "numberOfEnums" : 0,
+      "numberOfStructs" : 1
+    },
+    {
+      "numberOfClasses" : 1,
+      "fileLength" : 262,
+      "name" : "FileVisitor.swift",
+      "functionStats" : [
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "bodyLength" : 3,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 2,
+          "name" : "visitPost"
+        },
+        {
+          "bodyLength" : 43,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 2,
+          "name" : "visitPost"
+        },
+        {
+          "bodyLength" : 3,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 4,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 3,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 2,
+          "name" : "visitPost"
+        },
+        {
+          "bodyLength" : 5,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 3,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 2,
+          "name" : "visitPost"
+        },
+        {
+          "bodyLength" : 9,
+          "name" : "extractComments"
+        },
+        {
+          "bodyLength" : 32,
+          "name" : "create"
+        },
+        {
+          "bodyLength" : 8,
+          "name" : "comments"
+        },
+        {
+          "bodyLength" : 0,
+          "name" : "withoutTrivia"
+        }
+      ],
+      "numberOfEnums" : 0,
+      "numberOfStructs" : 0
+    },
+    {
+      "numberOfClasses" : 1,
+      "fileLength" : 61,
+      "name" : "Function.swift",
+      "functionStats" : [
+        {
+          "name" : "encode",
+          "bodyLength" : 9
+        }
+      ],
+      "numberOfEnums" : 2,
+      "numberOfStructs" : 0
+    },
+    {
+      "numberOfClasses" : 1,
+      "fileLength" : 35,
+      "name" : "Node.swift",
+      "functionStats" : [
+
+      ],
+      "numberOfEnums" : 1,
+      "numberOfStructs" : 0
+    },
+    {
+      "numberOfClasses" : 0,
+      "fileLength" : 61,
+      "name" : "Report.swift",
+      "functionStats" : [
+
+      ],
+      "numberOfEnums" : 0,
+      "numberOfStructs" : 4
+    },
+    {
+      "numberOfClasses" : 0,
+      "fileLength" : 84,
+      "name" : "Results.swift",
+      "functionStats" : [
+
+      ],
+      "numberOfEnums" : 0,
+      "numberOfStructs" : 1
+    },
+    {
+      "numberOfClasses" : 0,
+      "fileLength" : 259,
+      "name" : "Scan.swift",
+      "functionStats" : [
+        {
+          "bodyLength" : 17,
+          "name" : "run"
+        },
+        {
+          "bodyLength" : 21,
+          "name" : "detectFiles"
+        },
+        {
+          "bodyLength" : 13,
+          "name" : "parse"
+        },
+        {
+          "bodyLength" : 51,
+          "name" : "collate"
+        },
+        {
+          "bodyLength" : 42,
+          "name" : "createReport"
+        },
+        {
+          "bodyLength" : 11,
+          "name" : "createJSONReport"
+        },
+        {
+          "bodyLength" : 39,
+          "name" : "createTextReport"
+        }
+      ],
+      "numberOfEnums" : 1,
+      "numberOfStructs" : 1
+    },
+    {
+      "numberOfClasses" : 1,
+      "fileLength" : 66,
+      "name" : "Type.swift",
+      "functionStats" : [
+        {
+          "name" : "encode",
+          "bodyLength" : 10
+        }
+      ],
+      "numberOfEnums" : 2,
+      "numberOfStructs" : 0
+    }
+  ]
+}

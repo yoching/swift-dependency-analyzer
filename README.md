@@ -1,3 +1,6 @@
 # swift-experiments
 
-A description of this package.
+## How to run
+```bash
+swift run swift-experiments <path-to-project>
+```

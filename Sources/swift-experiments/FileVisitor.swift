@@ -2,12 +2,18 @@ import SwiftSyntax
 
 class FileVisitor: SyntaxVisitor {
 
+  let fileName: String
   private(set) var numberOfStructs = 0
   private(set) var numberOfClasses = 0
   private(set) var numberOfEnums = 0
-  private(set) var functionsInfo: [FunctionInfo] = []
+  private(set) var functionStats: [FunctionStats] = []
 
   private(set) var body: String = ""
+
+  init(fileName: String) {
+    self.fileName = fileName
+    super.init()
+  }
 
   override func visit(_ node: StructDeclSyntax) -> SyntaxVisitorContinueKind {
     numberOfStructs += 1
@@ -26,7 +32,7 @@ class FileVisitor: SyntaxVisitor {
 
   override func visit(_ node: FunctionDeclSyntax) -> SyntaxVisitorContinueKind {
     let bodyStatementsLength = node.body?.statements.description.components(separatedBy: "\n").count ?? 0
-    self.functionsInfo.append(
+    self.functionStats.append(
       .init(
         name: node.identifier.description,
         bodyLength: bodyStatementsLength
@@ -39,13 +45,15 @@ class FileVisitor: SyntaxVisitor {
     body = "\(node)"
     return .visitChildren
   }
-}
 
-struct FunctionInfo: CustomStringConvertible {
-  let name: String
-  let bodyLength: Int
-
-  var description: String {
-    "(name: \(name), length: \(bodyLength))"
+  var fileStats: FileStats {
+    .init(
+      name: fileName,
+      numberOfStructs: numberOfStructs,
+      numberOfClasses: numberOfClasses,
+      numberOfEnums: numberOfEnums,
+      functionStats: functionStats,
+      fileLength: body.components(separatedBy: "\n").count
+    )
   }
 }
