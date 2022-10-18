@@ -7,7 +7,8 @@ let package = Package(
     name: "swift-experiments",
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax", branch: "0.50600.1"),
-        .package(url: "https://github.com/JohnSundell/Files", from: "4.0.0")
+        .package(url: "https://github.com/JohnSundell/Files", from: "4.0.0"),
+        .package(url: "https://github.com/apple/swift-format", branch: "release/5.6")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
