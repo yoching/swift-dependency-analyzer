@@ -7,4 +7,5 @@ struct FileStats: Encodable {
   let numberOfEnums: Int
   let functionStats: [FunctionStats]
   let fileLength: Int
+  let dependencyStats: [FileDependencyStats]
 }

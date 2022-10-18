@@ -21,6 +21,16 @@ func run() throws {
     let projectInfo = ProjectStats(files: fileInfos)
 
     try save(name: "stats.json", info: projectInfo)
+
+    // try sourceFolder.files.recursive.forEach { file in
+    //     try printSyntax(url: file.url)
+    // }
+}
+
+func printSyntax(url: URL) throws {
+    let sourceFile = try SyntaxParser.parse(url)
+    let strippedSyntax = sourceFile.withoutTrivia()
+    dump(strippedSyntax)
 }
 
 func analyzeOneFile(name: String, url: URL) throws -> FileStats {
