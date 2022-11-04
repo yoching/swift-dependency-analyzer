@@ -11,6 +11,32 @@ class FileVisitor: SyntaxVisitor {
 
   private(set) var dependentElementIdentifiers: [String] = []
 
+  private(set) var classDependencies: [String: [[(label: String, type: String)]]] = [:]
+
+  private var simplifiedClassDependencies: [String: [String]] {
+    return classDependencies.mapValues {
+      $0.flatMap { $0.map { $0.type } }
+    }
+  }
+  private var simplifiedClassDependencies2:
+    [String /* source */: [String /* target */: Int /* count */]]
+  {
+    simplifiedClassDependencies.mapValues {
+      dependentElementIdentifiers -> [String: Int] in
+      return Dictionary(grouping: dependentElementIdentifiers, by: { $0 })
+        .mapValues { $0.count }
+    }
+  }
+  private var dependencyLinks: [DependencyLink] {
+    return
+      simplifiedClassDependencies2.reduce(into: []) { acc, element in
+        let source = element.key
+        for (target, count) in element.value {
+          acc.append(.init(source: source, target: target, count: count))
+        }
+      }
+  }
+
   private(set) var body: String = ""
 
   init(fileName: String) {
@@ -25,6 +51,24 @@ class FileVisitor: SyntaxVisitor {
 
   override func visit(_ node: ClassDeclSyntax) -> SyntaxVisitorContinueKind {
     numberOfClasses += 1
+
+    var className = ""
+    switch node.identifier.tokenKind {
+    case .identifier(let identifier):
+      className = identifier
+    default:
+      break
+    }
+
+    var memberInfo: [[(label: String, type: String)]] = []
+    for member: MemberDeclListItemSyntax in node.members.members {
+      if let variableDecl = member.decl.asProtocol(DeclSyntaxProtocol.self) as? VariableDeclSyntax {
+        memberInfo.append(dependentElementIdentifier(decl: variableDecl))
+      }
+    }
+
+    classDependencies[className] = memberInfo
+
     return .visitChildren
   }
 
@@ -34,7 +78,8 @@ class FileVisitor: SyntaxVisitor {
   }
 
   override func visit(_ node: FunctionDeclSyntax) -> SyntaxVisitorContinueKind {
-    let bodyStatementsLength = node.body?.statements.description.components(separatedBy: "\n").count ?? 0
+    let bodyStatementsLength =
+      node.body?.statements.description.components(separatedBy: "\n").count ?? 0
     self.functionStats.append(
       .init(
         name: node.identifier.description,
@@ -45,6 +90,8 @@ class FileVisitor: SyntaxVisitor {
   }
 
   override func visit(_ decl: VariableDeclSyntax) -> SyntaxVisitorContinueKind {
+
+    print(decl.parent)
     for binding in decl.bindings {
 
       // Label
@@ -64,10 +111,10 @@ class FileVisitor: SyntaxVisitor {
       }
       for token in type.tokens {
         switch token.tokenKind {
-          case .identifier(let identifier):
+        case .identifier(let identifier):
 
           dependentElementIdentifiers.append(identifier)
-          default:
+        default:
           break
         }
       }
@@ -86,6 +133,16 @@ class FileVisitor: SyntaxVisitor {
       .mapValues { $0.count }
       .map(FileDependencyStats.init)
 
+    let classDependencyStats = simplifiedClassDependencies.map {
+      className, dependentElementIdentifiers -> ClassDependencyStats in
+      .init(
+        className: className,
+        dependencies: Dictionary(grouping: dependentElementIdentifiers, by: { $0 })
+          .mapValues { $0.count }
+          .map(FileDependencyStats.init)
+      )
+    }
+
     return .init(
       name: fileName,
       numberOfStructs: numberOfStructs,
@@ -93,12 +150,64 @@ class FileVisitor: SyntaxVisitor {
       numberOfEnums: numberOfEnums,
       functionStats: functionStats,
       fileLength: body.components(separatedBy: "\n").count,
-      dependencyStats: dependencyStats
+      dependencyStats: dependencyStats,
+      classDependencyStats: classDependencyStats,
+      dependencyLinks: dependencyLinks
     )
+  }
+
+  func dependentElementIdentifier(decl: VariableDeclSyntax) -> [(label: String, type: String)] {
+    return decl.bindings.compactMap(dependentElementIdentifier)
+  }
+
+  func dependentElementIdentifier(binding: PatternBindingListSyntax.Element) -> (
+    label: String, type: String
+  )? {
+    var label: String = ""
+
+    // Label
+    let pattern = binding.pattern
+    for token in pattern.tokens {
+      switch token.tokenKind {
+      case .identifier(let identifier):
+        label = identifier
+      default:
+        return nil
+      }
+    }
+
+    // Type
+    var typeName: String = ""
+    guard let type = binding.typeAnnotation?.type else {
+      print("Type annotation not found")
+      return nil
+    }
+
+    for token in type.tokens {
+      switch token.tokenKind {
+      case .identifier(let identifier):
+        typeName = identifier
+      default:
+        return nil
+      }
+    }
+
+    return (label: label, type: typeName)
   }
 }
 
 struct FileDependencyStats: Encodable {
   let identifier: String
+  let count: Int
+}
+
+struct ClassDependencyStats: Encodable {
+  let className: String
+  let dependencies: [FileDependencyStats]
+}
+
+struct DependencyLink: Encodable {
+  let source: String
+  let target: String
   let count: Int
 }

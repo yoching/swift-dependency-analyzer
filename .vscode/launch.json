@@ -5,7 +5,9 @@
             "request": "launch",
             "name": "Debug swift-experiments",
             "program": "${workspaceFolder:swift-experiments}/.build/debug/swift-experiments",
-            "args": [],
+            "args": [
+                "${workspaceFolder:swift-experiments}/Input"
+            ],
             "cwd": "${workspaceFolder:swift-experiments}",
             "preLaunchTask": "swift: Build Debug swift-experiments"
         },
@@ -14,7 +16,9 @@
             "request": "launch",
             "name": "Release swift-experiments",
             "program": "${workspaceFolder:swift-experiments}/.build/release/swift-experiments",
-            "args": [],
+            "args": [
+                "${workspaceFolder:swift-experiments}/Input"
+            ],
             "cwd": "${workspaceFolder:swift-experiments}",
             "preLaunchTask": "swift: Build Release swift-experiments"
         }

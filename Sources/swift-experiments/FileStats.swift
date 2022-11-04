@@ -8,4 +8,6 @@ struct FileStats: Encodable {
   let functionStats: [FunctionStats]
   let fileLength: Int
   let dependencyStats: [FileDependencyStats]
+  let classDependencyStats: [ClassDependencyStats]
+  let dependencyLinks: [DependencyLink]
 }

@@ -1,66 +1,65 @@
+import Files
 import Foundation
 import SwiftSyntax
 import SwiftSyntaxParser
-import Files
 
 // let file = CommandLine.arguments[1]
 
-
 func run() throws {
 
-    print(CommandLine.arguments)
+  print(CommandLine.arguments)
 
-    let path = CommandLine.arguments[1]
+  let path = CommandLine.arguments[1]
 
-    let sourceFolder = try Folder(path: path)
-    
-    let fileInfos = try sourceFolder.files.recursive.map { file throws -> FileStats in 
-        try analyzeOneFile(name: file.name, url: file.url)
-    }
+  let sourceFolder = try Folder(path: path)
 
-    let projectInfo = ProjectStats(files: fileInfos)
+  let fileInfos = try sourceFolder.files.recursive.map { file throws -> FileStats in
+    try analyzeOneFile(name: file.name, url: file.url)
+  }
 
-    try save(name: "stats.json", info: projectInfo)
+  let projectInfo = ProjectStats(files: fileInfos)
 
-    // try sourceFolder.files.recursive.forEach { file in
-    //     try printSyntax(url: file.url)
-    // }
+  try save(name: "stats.json", info: projectInfo)
+
+  // try sourceFolder.files.recursive.forEach { file in
+  //     try printSyntax(url: file.url)
+  // }
 }
 
 func printSyntax(url: URL) throws {
-    let sourceFile = try SyntaxParser.parse(url)
-    let strippedSyntax = sourceFile.withoutTrivia()
-    dump(strippedSyntax)
+  let sourceFile = try SyntaxParser.parse(url)
+  let strippedSyntax = sourceFile.withoutTrivia()
+  dump(strippedSyntax)
 }
 
 func analyzeOneFile(name: String, url: URL) throws -> FileStats {
-    let sourceFile = try SyntaxParser.parse(url)
+  let sourceFile = try SyntaxParser.parse(url)
 
-    let fileVisitor = FileVisitor(fileName: name)
-    let _ = fileVisitor.walk(sourceFile)
+  let fileVisitor = FileVisitor(fileName: name)
+  let _ = fileVisitor.walk(sourceFile)
 
-    // print(sourceFile)
+  // print(sourceFile)
 
-    print("---")
-    print("Structs:", fileVisitor.numberOfStructs)
-    print("Classes:", fileVisitor.numberOfClasses)
-    print("Enums:", fileVisitor.numberOfEnums)
-    print("Functions:", fileVisitor.functionStats)
-    print("File length:", fileVisitor.body.components(separatedBy: "\n").count)
-    print("---")
+  print("---")
+  print("Structs:", fileVisitor.numberOfStructs)
+  print("Classes:", fileVisitor.numberOfClasses)
+  print("Enums:", fileVisitor.numberOfEnums)
+  print("Functions:", fileVisitor.functionStats)
+  print("File length:", fileVisitor.body.components(separatedBy: "\n").count)
+  print("---")
 
-    return fileVisitor.fileStats
+  return fileVisitor.fileStats
 
-    // let incremented = AddOneToIntegerLiterals().visit(sourceFile)
-    // print(incremented)
+  // let incremented = AddOneToIntegerLiterals().visit(sourceFile)
+  // print(incremented)
 }
 
 func save<Info: Encodable>(name: String, info: Info) throws {
-    let encoder = JSONEncoder()
-    encoder.outputFormatting = .prettyPrinted
-    let jsonFile = try encoder.encode(info)
-    let outputFolder = try Folder.current.createSubfolder(at: "Output")
-    try outputFolder.createFile(at: name, contents: jsonFile)
+  let encoder = JSONEncoder()
+  encoder.outputFormatting = .prettyPrinted
+  let jsonFile = try encoder.encode(info)
+  let outputFolder = try Folder.current.createSubfolder(at: "Output")
+  try outputFolder.createFile(at: name, contents: jsonFile)
 }
 
 try run()
