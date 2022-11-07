@@ -1,6 +1,6 @@
-# swift-experiments
+# project-analysis-swift
 
 ## How to run
 ```bash
-swift run swift-experiments <path-to-project>
+swift run project-analysis-swift <path-to-project>
 ```

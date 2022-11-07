@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-experiments",
+    name: "project-analysis-swift",
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax", branch: "0.50600.1"),
         .package(url: "https://github.com/JohnSundell/Files", from: "4.0.0"),
@@ -14,7 +14,7 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .executableTarget(
-            name: "swift-experiments",
+            name: "project-analysis-swift",
             dependencies: [
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxParser", package: "swift-syntax"),
@@ -22,8 +22,8 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "swift-experimentsTests",
-            dependencies: ["swift-experiments"]
+            name: "project-analysis-swiftTests",
+            dependencies: ["project-analysis-swift"]
         ),
     ]
 )

@@ -3,24 +3,24 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug swift-experiments",
-            "program": "${workspaceFolder:swift-experiments}/.build/debug/swift-experiments",
+            "name": "Debug project-analysis-swift",
+            "program": "${workspaceFolder:project-analysis-swift}/.build/debug/project-analysis-swift",
             "args": [
-                "${workspaceFolder:swift-experiments}/Input"
+                "${workspaceFolder:project-analysis-swift}/Input"
             ],
-            "cwd": "${workspaceFolder:swift-experiments}",
-            "preLaunchTask": "swift: Build Debug swift-experiments"
+            "cwd": "${workspaceFolder:project-analysis-swift}",
+            "preLaunchTask": "swift: Build Debug project-analysis-swift"
         },
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Release swift-experiments",
-            "program": "${workspaceFolder:swift-experiments}/.build/release/swift-experiments",
+            "name": "Release project-analysis-swift",
+            "program": "${workspaceFolder:project-analysis-swift}/.build/release/project-analysis-swift",
             "args": [
-                "${workspaceFolder:swift-experiments}/Input"
+                "${workspaceFolder:project-analysis-swift}/Input"
             ],
-            "cwd": "${workspaceFolder:swift-experiments}",
-            "preLaunchTask": "swift: Build Release swift-experiments"
+            "cwd": "${workspaceFolder:project-analysis-swift}",
+            "preLaunchTask": "swift: Build Release project-analysis-swift"
         }
     ]
 }

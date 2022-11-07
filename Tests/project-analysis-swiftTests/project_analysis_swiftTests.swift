@@ -15,7 +15,7 @@ final class swift_experimentsTests: XCTestCase {
         // Mac Catalyst won't have `Process`, but it is supported for executables.
         #if !targetEnvironment(macCatalyst)
 
-        let fooBinary = productsDirectory.appendingPathComponent("swift-experiments")
+        let fooBinary = productsDirectory.appendingPathComponent("project-analysis-swift")
 
         let process = Process()
         process.executableURL = fooBinary
