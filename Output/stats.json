@@ -1,80 +1,173 @@
 {
   "files" : [
     {
-      "numberOfStructs" : 1,
+      "classDependencyStats" : [
+
+      ],
       "name" : "Command.swift",
-      "numberOfClasses" : 0,
       "functionStats" : [
         {
           "bodyLength" : 21,
           "name" : "run"
         }
       ],
-      "numberOfEnums" : 0,
-      "fileLength" : 48
-    },
-    {
-      "numberOfStructs" : 0,
-      "name" : "main.swift",
-      "numberOfClasses" : 0,
-      "functionStats" : [
+      "dependencyLinks" : [
 
       ],
+      "dependencyStats" : [
+        {
+          "identifier" : "ReportType",
+          "count" : 1
+        },
+        {
+          "identifier" : "String",
+          "count" : 1
+        },
+        {
+          "identifier" : "Configuration",
+          "count" : 1
+        },
+        {
+          "identifier" : "Scan",
+          "count" : 1
+        }
+      ],
+      "numberOfStructs" : 1,
       "numberOfEnums" : 0,
-      "fileLength" : 14
+      "fileLength" : 48,
+      "numberOfClasses" : 0
     },
     {
+      "numberOfEnums" : 0,
+      "numberOfClasses" : 0,
+      "dependencyStats" : [
+
+      ],
+      "classDependencyStats" : [
+
+      ],
+      "name" : "main.swift",
+      "numberOfStructs" : 0,
+      "fileLength" : 14,
+      "dependencyLinks" : [
+
+      ],
+      "functionStats" : [
+
+      ]
+    },
+    {
+      "numberOfEnums" : 0,
       "numberOfClasses" : 1,
-      "fileLength" : 45,
+      "dependencyStats" : [
+
+      ],
+      "classDependencyStats" : [
+        {
+          "dependencies" : [
+
+          ],
+          "className" : "BodyStripper"
+        }
+      ],
       "name" : "BodyStripper.swift",
+      "numberOfStructs" : 0,
+      "fileLength" : 45,
+      "dependencyLinks" : [
+
+      ],
       "functionStats" : [
         {
-          "name" : "visit",
+          "bodyLength" : 4,
+          "name" : "visit"
+        },
+        {
+          "bodyLength" : 19,
+          "name" : "clean"
+        }
+      ]
+    },
+    {
+      "numberOfEnums" : 1,
+      "numberOfClasses" : 0,
+      "dependencyStats" : [
+        {
+          "count" : 1,
+          "identifier" : "CommentType"
+        },
+        {
+          "count" : 1,
+          "identifier" : "String"
+        }
+      ],
+      "classDependencyStats" : [
+
+      ],
+      "name" : "Comment.swift",
+      "numberOfStructs" : 1,
+      "fileLength" : 22,
+      "dependencyLinks" : [
+
+      ],
+      "functionStats" : [
+
+      ]
+    },
+    {
+      "numberOfEnums" : 0,
+      "numberOfClasses" : 0,
+      "dependencyStats" : [
+        {
+          "identifier" : "String",
+          "count" : 1
+        },
+        {
+          "identifier" : "Configuration",
+          "count" : 1
+        }
+      ],
+      "classDependencyStats" : [
+
+      ],
+      "name" : "Configuration.swift",
+      "numberOfStructs" : 1,
+      "fileLength" : 41,
+      "dependencyLinks" : [
+
+      ],
+      "functionStats" : [
+        {
+          "name" : "excludedPath",
           "bodyLength" : 4
         },
         {
-          "name" : "clean",
-          "bodyLength" : 19
+          "name" : "parse",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "parse",
+          "bodyLength" : 4
         }
-      ],
-      "numberOfEnums" : 0,
-      "numberOfStructs" : 0
+      ]
     },
     {
+      "numberOfEnums" : 0,
       "numberOfClasses" : 0,
-      "fileLength" : 22,
-      "name" : "Comment.swift",
-      "functionStats" : [
+      "dependencyStats" : [
+        {
+          "count" : 1,
+          "identifier" : "String"
+        }
+      ],
+      "classDependencyStats" : [
 
       ],
-      "numberOfEnums" : 1,
-      "numberOfStructs" : 1
-    },
-    {
-      "numberOfClasses" : 0,
-      "fileLength" : 41,
-      "name" : "Configuration.swift",
-      "functionStats" : [
-        {
-          "bodyLength" : 4,
-          "name" : "excludedPath"
-        },
-        {
-          "bodyLength" : 3,
-          "name" : "parse"
-        },
-        {
-          "bodyLength" : 4,
-          "name" : "parse"
-        }
-      ],
-      "numberOfEnums" : 0,
-      "numberOfStructs" : 1
-    },
-    {
-      "numberOfClasses" : 0,
-      "fileLength" : 42,
       "name" : "Extensions.swift",
+      "numberOfStructs" : 0,
+      "fileLength" : 42,
+      "dependencyLinks" : [
+
+      ],
       "functionStats" : [
         {
           "name" : "sum",
@@ -84,204 +177,431 @@
           "name" : "removingDuplicateLineBreaks",
           "bodyLength" : 4
         }
-      ],
-      "numberOfEnums" : 0,
-      "numberOfStructs" : 0
+      ]
     },
     {
+      "dependencyLinks" : [
+
+      ],
+      "functionStats" : [
+        {
+          "bodyLength" : 6,
+          "name" : "debugPrint"
+        }
+      ],
+      "dependencyStats" : [
+        {
+          "count" : 1,
+          "identifier" : "FileVisitor"
+        },
+        {
+          "count" : 1,
+          "identifier" : "URL"
+        }
+      ],
+      "classDependencyStats" : [
+
+      ],
       "numberOfClasses" : 0,
       "fileLength" : 66,
       "name" : "File.swift",
-      "functionStats" : [
-        {
-          "name" : "debugPrint",
-          "bodyLength" : 6
-        }
-      ],
-      "numberOfEnums" : 0,
-      "numberOfStructs" : 1
+      "numberOfStructs" : 1,
+      "numberOfEnums" : 0
     },
     {
+      "dependencyLinks" : [
+
+      ],
+      "functionStats" : [
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 43
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 4
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 5
+        },
+        {
+          "name" : "visit",
+          "bodyLength" : 3
+        },
+        {
+          "name" : "visitPost",
+          "bodyLength" : 2
+        },
+        {
+          "name" : "extractComments",
+          "bodyLength" : 9
+        },
+        {
+          "name" : "create",
+          "bodyLength" : 32
+        },
+        {
+          "name" : "comments",
+          "bodyLength" : 8
+        },
+        {
+          "name" : "withoutTrivia",
+          "bodyLength" : 0
+        }
+      ],
+      "dependencyStats" : [
+        {
+          "identifier" : "String",
+          "count" : 6
+        },
+        {
+          "identifier" : "SwiftSyntax",
+          "count" : 2
+        },
+        {
+          "identifier" : "Node",
+          "count" : 1
+        },
+        {
+          "identifier" : "Trivia",
+          "count" : 1
+        },
+        {
+          "identifier" : "TypeInheritanceClauseSyntax",
+          "count" : 1
+        }
+      ],
+      "classDependencyStats" : [
+        {
+          "className" : "FileVisitor",
+          "dependencies" : [
+
+          ]
+        }
+      ],
       "numberOfClasses" : 1,
       "fileLength" : 262,
       "name" : "FileVisitor.swift",
-      "functionStats" : [
-        {
-          "name" : "visit",
-          "bodyLength" : 3
-        },
-        {
-          "name" : "visitPost",
-          "bodyLength" : 2
-        },
-        {
-          "name" : "visit",
-          "bodyLength" : 3
-        },
-        {
-          "name" : "visitPost",
-          "bodyLength" : 2
-        },
-        {
-          "name" : "visitPost",
-          "bodyLength" : 2
-        },
-        {
-          "bodyLength" : 3,
-          "name" : "visit"
-        },
-        {
-          "bodyLength" : 2,
-          "name" : "visitPost"
-        },
-        {
-          "bodyLength" : 43,
-          "name" : "visit"
-        },
-        {
-          "bodyLength" : 2,
-          "name" : "visitPost"
-        },
-        {
-          "bodyLength" : 3,
-          "name" : "visit"
-        },
-        {
-          "bodyLength" : 4,
-          "name" : "visit"
-        },
-        {
-          "bodyLength" : 3,
-          "name" : "visit"
-        },
-        {
-          "bodyLength" : 2,
-          "name" : "visitPost"
-        },
-        {
-          "bodyLength" : 5,
-          "name" : "visit"
-        },
-        {
-          "bodyLength" : 3,
-          "name" : "visit"
-        },
-        {
-          "bodyLength" : 2,
-          "name" : "visitPost"
-        },
-        {
-          "bodyLength" : 9,
-          "name" : "extractComments"
-        },
-        {
-          "bodyLength" : 32,
-          "name" : "create"
-        },
-        {
-          "bodyLength" : 8,
-          "name" : "comments"
-        },
-        {
-          "bodyLength" : 0,
-          "name" : "withoutTrivia"
-        }
-      ],
-      "numberOfEnums" : 0,
-      "numberOfStructs" : 0
+      "numberOfStructs" : 0,
+      "numberOfEnums" : 0
     },
     {
-      "numberOfClasses" : 1,
-      "fileLength" : 61,
-      "name" : "Function.swift",
+      "dependencyLinks" : [
+        {
+          "count" : 1,
+          "target" : "ThrowingStatus",
+          "source" : "Function"
+        },
+        {
+          "count" : 1,
+          "target" : "Bool",
+          "source" : "Function"
+        },
+        {
+          "count" : 2,
+          "target" : "String",
+          "source" : "Function"
+        }
+      ],
       "functionStats" : [
         {
           "name" : "encode",
           "bodyLength" : 9
         }
       ],
-      "numberOfEnums" : 2,
-      "numberOfStructs" : 0
+      "dependencyStats" : [
+        {
+          "count" : 1,
+          "identifier" : "ThrowingStatus"
+        },
+        {
+          "count" : 1,
+          "identifier" : "Bool"
+        },
+        {
+          "count" : 3,
+          "identifier" : "String"
+        }
+      ],
+      "classDependencyStats" : [
+        {
+          "dependencies" : [
+            {
+              "count" : 2,
+              "identifier" : "String"
+            },
+            {
+              "count" : 1,
+              "identifier" : "Bool"
+            },
+            {
+              "count" : 1,
+              "identifier" : "ThrowingStatus"
+            }
+          ],
+          "className" : "Function"
+        }
+      ],
+      "numberOfClasses" : 1,
+      "fileLength" : 61,
+      "name" : "Function.swift",
+      "numberOfStructs" : 0,
+      "numberOfEnums" : 2
     },
     {
+      "dependencyLinks" : [
+
+      ],
+      "functionStats" : [
+
+      ],
+      "dependencyStats" : [
+        {
+          "identifier" : "Node",
+          "count" : 1
+        }
+      ],
+      "classDependencyStats" : [
+        {
+          "dependencies" : [
+
+          ],
+          "className" : "Node"
+        }
+      ],
       "numberOfClasses" : 1,
       "fileLength" : 35,
       "name" : "Node.swift",
+      "numberOfStructs" : 0,
+      "numberOfEnums" : 1
+    },
+    {
+      "dependencyLinks" : [
+
+      ],
       "functionStats" : [
 
       ],
-      "numberOfEnums" : 1,
-      "numberOfStructs" : 0
-    },
-    {
+      "dependencyStats" : [
+        {
+          "identifier" : "Scan",
+          "count" : 1
+        },
+        {
+          "identifier" : "Stat",
+          "count" : 4
+        },
+        {
+          "identifier" : "Object",
+          "count" : 1
+        },
+        {
+          "identifier" : "String",
+          "count" : 1
+        },
+        {
+          "identifier" : "Int",
+          "count" : 9
+        }
+      ],
+      "classDependencyStats" : [
+
+      ],
       "numberOfClasses" : 0,
       "fileLength" : 61,
       "name" : "Report.swift",
+      "numberOfStructs" : 4,
+      "numberOfEnums" : 0
+    },
+    {
+      "dependencyLinks" : [
+
+      ],
       "functionStats" : [
 
       ],
-      "numberOfEnums" : 0,
-      "numberOfStructs" : 4
-    },
-    {
+      "dependencyStats" : [
+        {
+          "count" : 2,
+          "identifier" : "File"
+        },
+        {
+          "count" : 1,
+          "identifier" : "Type"
+        },
+        {
+          "count" : 5,
+          "identifier" : "Int"
+        }
+      ],
+      "classDependencyStats" : [
+
+      ],
       "numberOfClasses" : 0,
       "fileLength" : 84,
       "name" : "Results.swift",
-      "functionStats" : [
-
-      ],
-      "numberOfEnums" : 0,
-      "numberOfStructs" : 1
+      "numberOfStructs" : 1,
+      "numberOfEnums" : 0
     },
     {
+      "dependencyLinks" : [
+
+      ],
+      "functionStats" : [
+        {
+          "name" : "run",
+          "bodyLength" : 17
+        },
+        {
+          "name" : "detectFiles",
+          "bodyLength" : 21
+        },
+        {
+          "name" : "parse",
+          "bodyLength" : 13
+        },
+        {
+          "name" : "collate",
+          "bodyLength" : 51
+        },
+        {
+          "name" : "createReport",
+          "bodyLength" : 42
+        },
+        {
+          "name" : "createJSONReport",
+          "bodyLength" : 11
+        },
+        {
+          "name" : "createTextReport",
+          "bodyLength" : 39
+        }
+      ],
+      "dependencyStats" : [
+        {
+          "identifier" : "String",
+          "count" : 1
+        },
+        {
+          "identifier" : "Report",
+          "count" : 2
+        },
+        {
+          "identifier" : "URL",
+          "count" : 1
+        },
+        {
+          "identifier" : "Stat",
+          "count" : 2
+        }
+      ],
+      "classDependencyStats" : [
+
+      ],
       "numberOfClasses" : 0,
       "fileLength" : 259,
       "name" : "Scan.swift",
-      "functionStats" : [
-        {
-          "bodyLength" : 17,
-          "name" : "run"
-        },
-        {
-          "bodyLength" : 21,
-          "name" : "detectFiles"
-        },
-        {
-          "bodyLength" : 13,
-          "name" : "parse"
-        },
-        {
-          "bodyLength" : 51,
-          "name" : "collate"
-        },
-        {
-          "bodyLength" : 42,
-          "name" : "createReport"
-        },
-        {
-          "bodyLength" : 11,
-          "name" : "createJSONReport"
-        },
-        {
-          "bodyLength" : 39,
-          "name" : "createTextReport"
-        }
-      ],
-      "numberOfEnums" : 1,
-      "numberOfStructs" : 1
+      "numberOfStructs" : 1,
+      "numberOfEnums" : 1
     },
     {
+      "dependencyLinks" : [
+        {
+          "source" : "Type",
+          "target" : "ObjectType",
+          "count" : 1
+        },
+        {
+          "source" : "Type",
+          "target" : "String",
+          "count" : 3
+        }
+      ],
+      "functionStats" : [
+        {
+          "bodyLength" : 10,
+          "name" : "encode"
+        }
+      ],
+      "dependencyStats" : [
+        {
+          "identifier" : "ObjectType",
+          "count" : 1
+        },
+        {
+          "identifier" : "Comment",
+          "count" : 1
+        },
+        {
+          "identifier" : "String",
+          "count" : 4
+        }
+      ],
+      "classDependencyStats" : [
+        {
+          "dependencies" : [
+            {
+              "identifier" : "String",
+              "count" : 3
+            },
+            {
+              "identifier" : "ObjectType",
+              "count" : 1
+            }
+          ],
+          "className" : "Type"
+        }
+      ],
       "numberOfClasses" : 1,
       "fileLength" : 66,
       "name" : "Type.swift",
-      "functionStats" : [
-        {
-          "name" : "encode",
-          "bodyLength" : 10
-        }
-      ],
-      "numberOfEnums" : 2,
-      "numberOfStructs" : 0
+      "numberOfStructs" : 0,
+      "numberOfEnums" : 2
     }
   ]
 }
