@@ -1,5 +1,7 @@
 import SwiftSyntax
 
+typealias TypeName = String
+
 class FileVisitor: SyntaxVisitor {
 
   let fileName: String
@@ -11,7 +13,7 @@ class FileVisitor: SyntaxVisitor {
 
   private(set) var dependentElementIdentifiers: [String] = []
 
-  private(set) var classDependencies: [String: [[(label: String, type: String)]]] = [:]
+  private(set) var classDependencies: [TypeName: [[(label: String, type: TypeName)]]] = [:]
 
   private var simplifiedClassDependencies: [String: [String]] {
     return classDependencies.mapValues {
@@ -60,12 +62,9 @@ class FileVisitor: SyntaxVisitor {
       break
     }
 
-    var memberInfo: [[(label: String, type: String)]] = []
-    for member: MemberDeclListItemSyntax in node.members.members {
-      if let variableDecl = member.decl.asProtocol(DeclSyntaxProtocol.self) as? VariableDeclSyntax {
-        memberInfo.append(dependentElementIdentifier(decl: variableDecl))
-      }
-    }
+    let memberInfo: [[(label: String, type: TypeName)]] = node.members.members
+      .compactMap { $0.decl.asProtocol(DeclSyntaxProtocol.self) as? VariableDeclSyntax }
+      .map(\.bindingInfos)
 
     classDependencies[className] = memberInfo
 
@@ -90,35 +89,13 @@ class FileVisitor: SyntaxVisitor {
   }
 
   override func visit(_ decl: VariableDeclSyntax) -> SyntaxVisitorContinueKind {
-
-    print(decl.parent)
-    for binding in decl.bindings {
-
-      // Label
-      // let pattern = binding.pattern
-      // for token in pattern.tokens {
-      //   switch token.tokenKind {
-      //     case .identifier(let identifier):
-      //     default:
-      //     break
-      //   }
-      // }
-
-      // Type
-      guard let type = binding.typeAnnotation?.type else {
-        print("Type annotation not found")
-        break
-      }
-      for token in type.tokens {
-        switch token.tokenKind {
-        case .identifier(let identifier):
-
-          dependentElementIdentifiers.append(identifier)
-        default:
-          break
+    dependentElementIdentifiers.append(
+      contentsOf:
+        decl.bindings.compactMap {
+          $0.labelAndType?.type
         }
-      }
-    }
+    )
+
     return .visitChildren
   }
 
@@ -155,59 +132,44 @@ class FileVisitor: SyntaxVisitor {
       dependencyLinks: dependencyLinks
     )
   }
+}
 
-  func dependentElementIdentifier(decl: VariableDeclSyntax) -> [(label: String, type: String)] {
-    return decl.bindings.compactMap(dependentElementIdentifier)
+extension VariableDeclSyntax {
+  var bindingInfos: [(label: String, type: String)] {
+    self.bindings.compactMap(\.labelAndType)
   }
+}
 
-  func dependentElementIdentifier(binding: PatternBindingListSyntax.Element) -> (
-    label: String, type: String
-  )? {
-    var label: String = ""
-
+extension PatternBindingListSyntax.Element {
+  var labelAndType: (label: String, type: String)? {
     // Label
-    let pattern = binding.pattern
-    for token in pattern.tokens {
-      switch token.tokenKind {
-      case .identifier(let identifier):
-        label = identifier
-      default:
-        return nil
-      }
-    }
-
-    // Type
-    var typeName: String = ""
-    guard let type = binding.typeAnnotation?.type else {
-      print("Type annotation not found")
+    guard let label = self.pattern.tokens.identifier else {
       return nil
     }
 
-    for token in type.tokens {
-      switch token.tokenKind {
-      case .identifier(let identifier):
-        typeName = identifier
-      default:
-        return nil
-      }
+    // Type
+    guard let type = self.typeAnnotation?.type,
+      let typeName = type.tokens.identifier
+    else {
+      print("Type annotation not found")
+      return nil
     }
 
     return (label: label, type: typeName)
   }
 }
 
-struct FileDependencyStats: Encodable {
-  let identifier: String
-  let count: Int
-}
+extension SwiftSyntax.TokenSequence {
+  var identifier: String? {
+    for token in self {
+      switch token.tokenKind {
+      case .identifier(let identifier):
+        return identifier
+      default:
+        return nil
+      }
+    }
 
-struct ClassDependencyStats: Encodable {
-  let className: String
-  let dependencies: [FileDependencyStats]
-}
-
-struct DependencyLink: Encodable {
-  let source: String
-  let target: String
-  let count: Int
+    return nil
+  }
 }
