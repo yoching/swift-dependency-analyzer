@@ -1,11 +1,8 @@
 import SwiftSyntax
 
-typealias TypeName = String
-
-typealias LabelAndType = (label: String, type: TypeName)
-
 class FileVisitor: SyntaxVisitor {
 
+  // MARK: - Properties
   let fileName: String
 
   private(set) var numberOfStructs = 0
@@ -18,11 +15,13 @@ class FileVisitor: SyntaxVisitor {
 
   private(set) var body: String = ""
 
+  // MARK: - Initializer
   init(fileName: String) {
     self.fileName = fileName
     super.init()
   }
 
+  // MARK: - Visit methods
   override func visit(_ node: StructDeclSyntax) -> SyntaxVisitorContinueKind {
     numberOfStructs += 1
     return .visitChildren
@@ -56,7 +55,7 @@ class FileVisitor: SyntaxVisitor {
   override func visit(_ node: FunctionDeclSyntax) -> SyntaxVisitorContinueKind {
     let bodyStatementsLength =
       node.body?.statements.description.components(separatedBy: "\n").count ?? 0
-    self.functionStats.append(
+    functionStats.append(
       .init(
         name: node.identifier.description,
         bodyLength: bodyStatementsLength
@@ -70,18 +69,8 @@ class FileVisitor: SyntaxVisitor {
     return .visitChildren
   }
 
+  // MARK: - Stats
   var fileStats: FileStats {
-
-    let classDependencyStats = simplifiedClassDependencies.map {
-      className, dependencies -> ClassDependencyStats in
-      .init(
-        className: className,
-        dependencies:
-          dependencies
-          .map(DependencyCount.init)
-      )
-    }
-
     return .init(
       name: fileName,
       fileLength: body.components(separatedBy: "\n").count,
@@ -89,12 +78,13 @@ class FileVisitor: SyntaxVisitor {
       numberOfClasses: numberOfClasses,
       numberOfEnums: numberOfEnums,
       functionStats: functionStats,
-      classDependencyStats: classDependencyStats,
+      classDependencyStats: simplifiedClassDependencies.map(ClassDependencyStats.init),
       dependencyLinks: dependencyLinks
     )
   }
 }
 
+// MARK: - Private Methods
 extension FileVisitor {
   fileprivate var simplifiedClassDependencies:
     [TypeName /* source */: [TypeName /* target */: Int /* count */]]
@@ -126,6 +116,7 @@ extension FileVisitor {
   }
 }
 
+// MARK: - SwiftSyntax extensions
 extension VariableDeclSyntax {
   var bindingInfos: [LabelAndType] {
     self.bindings.compactMap(\.labelAndType)
