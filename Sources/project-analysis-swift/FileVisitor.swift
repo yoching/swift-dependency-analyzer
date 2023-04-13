@@ -89,11 +89,11 @@ class FileVisitor: SyntaxVisitor {
     //   .map(FileDependencyStats.init)
 
     let classDependencyStats = simplifiedClassDependencies.map {
-      className, dependentElementIdentifiers -> ClassDependencyStats in
+      className, dependencies -> ClassDependencyStats in
       .init(
         className: className,
-        dependencies: Dictionary(grouping: dependentElementIdentifiers, by: { $0 })
-          .mapValues { $0.count }
+        dependencies:
+          dependencies
           .map(FileDependencyStats.init)
       )
     }
@@ -113,25 +113,24 @@ class FileVisitor: SyntaxVisitor {
 }
 
 extension FileVisitor {
-  fileprivate var simplifiedClassDependencies: [String: [String]] {
-    return classDependencies.mapValues {
-      $0.flatMap { $0.map { $0.type } }
-    }
-  }
-
-  fileprivate var simplifiedClassDependencies2:
-    [String /* source */: [String /* target */: Int /* count */]]
+  fileprivate var simplifiedClassDependencies:
+    [TypeName /* source */: [TypeName /* target */: Int /* count */]]
   {
-    simplifiedClassDependencies.mapValues {
-      dependentElementIdentifiers -> [String: Int] in
-      return Dictionary(grouping: dependentElementIdentifiers, by: { $0 })
-        .mapValues { $0.count }
-    }
+    classDependencies
+      .mapValues { nestedLabelAndTypes -> [TypeName: Int] in
+        let typeNames =
+          nestedLabelAndTypes
+          .flatMap { $0 }
+          .map { $0.type }
+
+        return Dictionary(grouping: typeNames, by: { $0 })
+          .mapValues { $0.count }
+      }
   }
 
   fileprivate var dependencyLinks: [DependencyLink] {
     return
-      simplifiedClassDependencies2.reduce(into: []) { acc, element in
+      simplifiedClassDependencies.reduce(into: []) { acc, element in
         let source = element.key
         for (target, count) in element.value {
           acc.append(.init(source: source, target: target, count: count))
