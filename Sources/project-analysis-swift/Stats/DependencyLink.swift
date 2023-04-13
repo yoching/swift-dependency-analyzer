@@ -1,7 +1,7 @@
 import Foundation
 
 struct DependencyLink: Encodable {
-  let source: String
-  let target: String
+  let source: TypeName
+  let target: TypeName
   let count: Int
 }
