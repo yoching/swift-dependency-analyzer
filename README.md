@@ -57,7 +57,7 @@ $ swift run project-analysis-swift <path-to-project>
 
 ## Example
 
-You can run this with an example by this command:
+You can run analysis for an example with this command:
 ```bash
 $ swift run project-analysis-swift ./Input/
 ```
