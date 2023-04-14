@@ -1,10 +1,10 @@
 # Swift Project Analysis 2
 
-Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax).
+Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax)!
 
 ## Features
-- Analyze swift files in a folder and export the result to stats.json
-- Detect class dependencies
+- Analyze swift files and export the result as a json file.
+- Detect dependencies between classes:
   ```json
   {
     "className" : "A",
@@ -20,8 +20,7 @@ Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax
     ]
   }
   ```
-- Dependency links
-  - This could be used for visualization such as network diagram
+- Make dependency links:
   ```json
   [
     {
@@ -36,9 +35,12 @@ Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax
     } // 1 reference from `A` to `Int`
   ]
   ```
+  - Another representation of class dependencies
+  - This could be used for visualization, such as network diagram
+
 - Count class/struct/enum
 - Count file length
-- Count function length
+- Count function length:
   ```json
   [
     {
@@ -55,7 +57,7 @@ $ swift run project-analysis-swift <path-to-project>
 
 ## Example
 
-You can run this analysis for an example by the following command:
+You can run this with an example by this command:
 ```bash
 $ swift run project-analysis-swift ./Input/
 ```
@@ -85,18 +87,15 @@ class B {
     {
       "name" : "example.swift",
       "fileLength" : 14,
-      
       "numberOfClasses" : 2,
       "numberOfStructs" : 0,
       "numberOfEnums" : 0,
-
       "functionStats" : [
         {
           "name" : "foo",
           "bodyLength" : 1
         }
       ],
-
       "classDependencyStats" : [
         {
           "className" : "A",
@@ -116,7 +115,6 @@ class B {
           "dependencies" : []
         }
       ],
-
       "dependencyLinks" : [
         {
           "source" : "A",
@@ -136,5 +134,5 @@ class B {
 
 ## Motivation
 - I was interested in objectively comparing multiple Swift projects because I've made a lot of iOS apps from scratch during my career.
-- This follows my previous project, [Swift Project Analysis - 1](https://github.com/yoching/SwiftProjectAnalysis-1), which was written in Rust, maily for learning purposes.
-- Class dependencies could be visualized using data visualization libraries such as [D3](https://d3js.org/)
+- This follows my previous project, [Swift Project Analysis - 1](https://github.com/yoching/SwiftProjectAnalysis-1), which was written in Rust for learning purposes.
+- Class dependencies could be visualized using libraries such as [D3](https://d3js.org/)
