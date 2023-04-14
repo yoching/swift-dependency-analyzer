@@ -134,5 +134,5 @@ class B {
 
 ## Motivation
 - I was interested in objectively comparing multiple Swift projects because I've made a lot of iOS apps from scratch during my career.
-- This follows my previous project, [Swift Project Analysis - 1](https://github.com/yoching/SwiftProjectAnalysis-1), which was written in Rust for learning purposes.
+- This follows my previous project, [swift-analyzer](https://github.com/yoching/swift-analyzer), which was written in Rust maily for learning purposes.
 - Class dependencies could be visualized using libraries such as [D3](https://d3js.org/).
