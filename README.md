@@ -5,7 +5,7 @@ Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax
 ## Features
 - Analyze swift files and export the result as a json file.
 - Detect dependencies between classes:
-  ```json
+  ```javascript
   {
     "className" : "A",
     "dependencies" : [
@@ -21,7 +21,7 @@ Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax
   }
   ```
 - Make dependency links:
-  ```json
+  ```javascript
   [
     {
       "source" : "A",
@@ -41,7 +41,7 @@ Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax
 - Count class/struct/enum
 - Count file length
 - Count function length:
-  ```json
+  ```javascript
   [
     {
       "name" : "foo",
@@ -81,7 +81,7 @@ class B {
 ```
 
 ### Output
-```json
+```javascript
 {
   "files" : [
     {
