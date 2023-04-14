@@ -1,6 +1,6 @@
-# Swift Project Analysis 2
+# Swift Dependency Analyzer
 
-Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax)!
+Class dependencies analyzer for Swift projects, using [SwiftSyntax](https://github.com/apple/swift-syntax).
 
 ## Features
 - Analyze swift files and export the result as a json file
