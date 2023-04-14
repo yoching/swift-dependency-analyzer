@@ -3,8 +3,8 @@
 Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax)!
 
 ## Features
-- Analyze swift files and export the result as a json file.
-- Detect dependencies between classes:
+- Analyze swift files and export the result as a json file
+- Detect dependencies between classes
   ```javascript
   {
     "className" : "A",
@@ -20,7 +20,7 @@ Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax
     ]
   }
   ```
-- Make dependency links:
+- Make dependency links
   ```javascript
   [
     {
@@ -40,7 +40,7 @@ Analyze Swift projects using [SwiftSyntax](https://github.com/apple/swift-syntax
 
 - Count class/struct/enum
 - Count file length
-- Count function length:
+- Count function length
   ```javascript
   [
     {
@@ -135,4 +135,4 @@ class B {
 ## Motivation
 - I was interested in objectively comparing multiple Swift projects because I've made a lot of iOS apps from scratch during my career.
 - This follows my previous project, [Swift Project Analysis - 1](https://github.com/yoching/SwiftProjectAnalysis-1), which was written in Rust for learning purposes.
-- Class dependencies could be visualized using libraries such as [D3](https://d3js.org/)
+- Class dependencies could be visualized using libraries such as [D3](https://d3js.org/).
