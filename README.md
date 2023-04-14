@@ -36,7 +36,7 @@ Class dependencies analyzer for Swift projects, using [SwiftSyntax](https://gith
   ]
   ```
   - Another representation of class dependencies
-  - This could be used for visualization, such as network diagram
+  - This could be used for visualization, such as a network diagram
 
 - Count class/struct/enum
 - Count file length
